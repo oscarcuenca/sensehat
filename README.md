@@ -112,3 +112,29 @@ Is the temperature value you are publishing the same, unaltered numeric value as
 Are you publishing the latest temperature value? (some solution are queuing temperature value rather than discarding intermediate values)
 How to submit
 When you're ready to submit, you can upload files for each part of the assignment on the "My submission" tab.
+
+
+# MQTT Exercise
+This exercise is not graded, but you are strongly advised to work through the exercise as it will give you experience in using the MQTT API. As you move on from this course and may need to use different devices that require you to use one of the many MQTT clients to be able to connect to the Watson IoT platform.
+
+Task
+
+Take the python application you created for the the previous assignment and remove the ibmiotf API and replace it with one of the many available mqtt clients. I suggest you use the Eclipse paho project (http://www.eclipse.org/paho/), but feel free to use any of the available clients (https://github.com/mqtt/mqtt.github.io/wiki/libraries)
+
+You need to ensure you use the correct device IDs, mqtt topics and use the correct address for the broker as directed in the Watson IoT documentation (https://docs.internetofthings.ibmcloud.com). There is a wildcard character you can use when subscribing for messages. The + character will match everything at a topic level.
+
+E.g. when subscribing to receive commands the topic format is :
+
+iot-2/cmd/command_id/fmt/format_string
+
+where command_id and format_string need to be replaced with the required values or the + wildcard. So subscribing to iot-2/cmd/+/fmt/+ will get all commands in all formats, but iot-2/cmd/+/fmt/json will get all commands that are sent in JSON format. Wildcards can only be used when subscribing for messages. When publishing data wildcards are not allowed in the topic.
+
+You will be able to verify that your application is working when you get temperature readings being received in your Bluemix NodeRED application, and you get commands coming back to the device to update the output on the SenseHAT or SenseHAT simulator.
+
+Need additional help?
+
+If you are struggling to use the MQTT APIs then there is a worked example available (https://developer.ibm.com/recipes/tutorials/ibm-bluemix-with-python-and-iot-service/)
+
+# Deploying your APP at bluemix. Exemple 1
+
+
